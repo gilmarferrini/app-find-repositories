@@ -22,21 +22,27 @@ export class SearchRepositoriesComponent implements OnInit {
   ngOnInit() {}
 
   searchRepositories() {
+
+    if (this.searchedRepositoryName.trim() === '') {
+      this.emitAlertError('Fill search field');
+      return;
+    }
+
     this.repositoryService
       .findRepositoriesByName(this.searchedRepositoryName)
       .subscribe(repositoriesData => {
         this.repositories = repositoriesData.items;
         this.totalResults = repositoriesData.total_count;
       }, error => {
-        this.emitAlertError();
+        this.emitAlertError('You have reached the request limit. Wait a minute!');
       });
   }
 
-  async emitAlertError() {
+  async emitAlertError(message: string) {
     const alert = await this.alertController.create({
       cssClass: 'alert',
       header: 'Error',
-      message: 'You have reached the request limit. Wait a minute!',
+      message,
       buttons: ['OK'],
     });
 
