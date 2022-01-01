@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Repository } from '../models/repository';
 import { RepositoryService } from '../services/repository.service';
@@ -14,7 +15,8 @@ export class SearchRepositoriesComponent implements OnInit {
   totalResults = 0;
 
   constructor(
-    private repositoryService: RepositoryService
+    private repositoryService: RepositoryService,
+    public alertController: AlertController
   ) { }
 
   ngOnInit() {}
@@ -25,7 +27,20 @@ export class SearchRepositoriesComponent implements OnInit {
       .subscribe(repositoriesData => {
         this.repositories = repositoriesData.items;
         this.totalResults = repositoriesData.total_count;
+      }, error => {
+        this.emitAlertError();
       });
+  }
+
+  async emitAlertError() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: 'Error',
+      message: 'You have reached the request limit. Wait a minute!',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 
 }
