@@ -11,6 +11,7 @@ export class SearchRepositoriesComponent implements OnInit {
 
   repositories: Repository[] = [];
   searchedRepositoryName = '';
+  totalResults = 0;
 
   constructor(
     private repositoryService: RepositoryService
@@ -23,6 +24,7 @@ export class SearchRepositoriesComponent implements OnInit {
       .findRepositoriesByName(this.searchedRepositoryName)
       .subscribe(repositoriesData => {
         this.repositories = repositoriesData.items;
+        this.totalResults = repositoriesData.total_count;
       });
   }
 

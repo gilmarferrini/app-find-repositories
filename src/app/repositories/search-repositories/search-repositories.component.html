@@ -18,8 +18,13 @@
         </ion-button>
       </ion-col>
     </ion-row>
-  </ion-grid>
 
+    <ion-row class="ion-padding-bottom">
+      <ion-col>
+        <ion-title>Total results: {{ totalResults }}</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-list>
     <ion-item-sliding class="repository" *ngFor="let repository of repositories">
