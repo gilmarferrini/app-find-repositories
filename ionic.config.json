@@ -1,0 +1,7 @@
+{
+  "name": "ionic-find-repositories",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
