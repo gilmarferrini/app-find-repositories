@@ -74,6 +74,7 @@ export class SearchRepositoriesComponent implements OnInit {
   previousPage() {
 
     if (this.currentPage === 1) {
+      this.emitAlertError('Not possible! Page cannot be equal to 0');
       return;
     }
 
