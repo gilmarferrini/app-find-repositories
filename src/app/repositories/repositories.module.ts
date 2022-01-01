@@ -1,3 +1,4 @@
+import { RepositoryDetailsComponent } from './repository-details/repository-details.component';
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: '',
     component: SearchRepositoriesComponent
+  },
+  {
+    path: 'details',
+    component: RepositoryDetailsComponent
   }
 ];
 

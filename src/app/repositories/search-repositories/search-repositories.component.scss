@@ -15,6 +15,10 @@
   &__owner {
     font-size: 14px;
   }
+
+  &__link {
+    color: var(--ion-color-primary-contrast);
+  }
 }
 
 .pagination {
