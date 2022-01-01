@@ -1,0 +1,14 @@
+.repository {
+  ion-thumbnail {
+    --border-radius: 4px;
+    padding: 4px;
+  }
+
+  &__fullname {
+    font-weight: bold;
+  }
+
+  &__owner {
+    font-size: 14px;
+  }
+}

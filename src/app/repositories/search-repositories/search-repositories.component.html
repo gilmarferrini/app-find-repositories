@@ -22,9 +22,20 @@
 
 
   <ion-list>
-    <ion-item-sliding *ngFor="let repository of repositories">
+    <ion-item-sliding class="repository" *ngFor="let repository of repositories">
       <ion-item>
-        <ion-label>{{ repository.full_name }}</ion-label>
+        <ion-thumbnail>
+          <img [src]="repository.owner.avatar_url">
+        </ion-thumbnail>
+
+        <div class="repository__details">
+          <ion-label class="repository__fullname">
+            {{ repository.full_name }}
+          </ion-label>
+          <ion-text class="repository__owner">
+            {{ repository.owner.login }}
+          </ion-text>
+        </div>
       </ion-item>
       <ion-item-options>
         <ion-item-option>
