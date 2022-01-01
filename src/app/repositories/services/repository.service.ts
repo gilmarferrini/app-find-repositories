@@ -16,4 +16,8 @@ export class RepositoryService {
   findRepositoriesByName(repositoryName: string, page = 1) {
     return this.httpClient.get<RepositoryHttpResponse>(`${this.baseURL}/search/repositories?q=${repositoryName}&per_page=8&page=${page}`);
   }
+
+  findRepositoryDetails(repositoryName: string, ownerName: string) {
+    return this.httpClient.get<any>(`${this.baseURL}/repos/${ownerName}/${repositoryName}`);
+  }
 }
