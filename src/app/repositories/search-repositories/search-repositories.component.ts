@@ -13,6 +13,7 @@ export class SearchRepositoriesComponent implements OnInit {
   repositories: Repository[] = [];
   searchedRepositoryName = '';
   totalResults = 0;
+  hasSearched = false;
 
   constructor(
     private repositoryService: RepositoryService,
@@ -27,6 +28,8 @@ export class SearchRepositoriesComponent implements OnInit {
       this.emitAlertError('Fill search field');
       return;
     }
+
+    this.hasSearched = true;
 
     this.repositoryService
       .findRepositoriesByName(this.searchedRepositoryName)

@@ -49,4 +49,18 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <ion-grid *ngIf="hasSearched" class="pagination">
+    <ion-row>
+      <ion-col>
+        <ion-button>
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+        <ion-button>1</ion-button>
+        <ion-button>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
