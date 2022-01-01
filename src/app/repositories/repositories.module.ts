@@ -26,7 +26,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SearchRepositoriesComponent
+    SearchRepositoriesComponent,
+    RepositoryDetailsComponent
   ],
   imports: [
     IonicModule.forRoot(),
