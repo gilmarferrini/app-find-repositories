@@ -53,11 +53,11 @@
   <ion-grid *ngIf="hasSearched" class="pagination">
     <ion-row>
       <ion-col>
-        <ion-button>
+        <ion-button (click)="previousPage()">
           <ion-icon name="arrow-back"></ion-icon>
         </ion-button>
-        <ion-button>1</ion-button>
-        <ion-button>
+        <ion-button>{{ currentPage }}</ion-button>
+        <ion-button (click)="nextPage()">
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-button>
       </ion-col>

@@ -14,6 +14,8 @@ export class SearchRepositoriesComponent implements OnInit {
   searchedRepositoryName = '';
   totalResults = 0;
   hasSearched = false;
+  lastSearchedRepository = '';
+  currentPage = 1;
 
   constructor(
     private repositoryService: RepositoryService,
@@ -29,13 +31,13 @@ export class SearchRepositoriesComponent implements OnInit {
       return;
     }
 
-    this.hasSearched = true;
-
     this.repositoryService
       .findRepositoriesByName(this.searchedRepositoryName)
       .subscribe(repositoriesData => {
         this.repositories = repositoriesData.items;
         this.totalResults = repositoriesData.total_count;
+        this.lastSearchedRepository = this.searchedRepositoryName;
+        this.hasSearched = true;
       }, error => {
         this.emitAlertError('You have reached the request limit. Wait a minute!');
       });
@@ -52,4 +54,31 @@ export class SearchRepositoriesComponent implements OnInit {
     await alert.present();
   }
 
+  loadRepositoriesByPage(page = 1) {
+    this.repositoryService
+    .findRepositoriesByName(this.lastSearchedRepository, page)
+    .subscribe(repositoriesData => {
+      this.repositories = repositoriesData.items;
+      this.totalResults = repositoriesData.total_count;
+    }, error => {
+      this.emitAlertError('You have reached the request limit. Wait a minute!');
+    });
+  }
+
+  nextPage() {
+    this.currentPage++;
+
+    this.loadRepositoriesByPage(this.currentPage);
+  }
+
+  previousPage() {
+
+    if (this.currentPage === 1) {
+      return;
+    }
+
+    this.currentPage--;
+
+    this.loadRepositoriesByPage(this.currentPage);
+  }
 }
