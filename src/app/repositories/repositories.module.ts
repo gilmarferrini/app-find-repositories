@@ -15,8 +15,8 @@ const routes: Routes = [
     component: SearchRepositoriesComponent
   },
   {
-    path: 'details',
-    component: RepositoryDetailsComponent
+    path: 'details/:repositoryName/:ownerName',
+    component: RepositoryDetailsComponent,
   }
 ];
 
