@@ -1,3 +1,4 @@
+import { ResolverRepositoryService } from './resolvers/resolver-repository.service';
 import { RepositoryDetailsComponent } from './repository-details/repository-details.component';
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
@@ -17,6 +18,9 @@ const routes: Routes = [
   {
     path: 'details/:repositoryName/:ownerName',
     component: RepositoryDetailsComponent,
+    resolve: {
+      repository: ResolverRepositoryService
+    }
   }
 ];
 
