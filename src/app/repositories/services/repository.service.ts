@@ -20,4 +20,8 @@ export class RepositoryService {
   findRepositoryDetails(repositoryName: string, ownerName: string) {
     return this.httpClient.get<any>(`${this.baseURL}/repos/${ownerName}/${repositoryName}`);
   }
+
+  getRepositoriesFromUser(username: string) {
+    return this.httpClient.get(`${this.baseURL}/users/${username}/repos`);
+  }
 }
