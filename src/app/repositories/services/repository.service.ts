@@ -1,6 +1,7 @@
 import { RepositoryHttpResponse } from './../models/repository-http-response';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Repository } from '../models/repository';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,6 @@ export class RepositoryService {
   }
 
   getRepositoriesFromUser(username: string) {
-    return this.httpClient.get(`${this.baseURL}/users/${username}/repos`);
+    return this.httpClient.get<Repository[]>(`${this.baseURL}/users/${username}/repos`);
   }
 }
