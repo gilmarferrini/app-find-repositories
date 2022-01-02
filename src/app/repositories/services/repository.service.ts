@@ -2,6 +2,7 @@ import { RepositoryHttpResponse } from './../models/repository-http-response';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Repository } from '../models/repository';
+import { TopicsHttpResponse } from '../models/topics-http-response';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class RepositoryService {
 
   getRepositoriesFromUser(username: string) {
     return this.httpClient.get<Repository[]>(`${this.baseURL}/users/${username}/repos`);
+  }
+
+  getLastTenTopicsFromRepository(repositoryName: string) {
+    return this.httpClient.get<TopicsHttpResponse>(`${this.baseURL}/search/topics?q=${repositoryName}&per_page=10`);
   }
 }

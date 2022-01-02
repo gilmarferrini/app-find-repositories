@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Repository } from '../models/repository';
+import { Topic } from '../models/topic';
 import { RepositoryService } from '../services/repository.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class RepositoryDetailsComponent implements OnInit {
 
   repository: Repository;
   userRepositories: Repository[] = [];
+  last10TopicsRepository: Topic[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,6 +26,12 @@ export class RepositoryDetailsComponent implements OnInit {
       .subscribe(data => {
         this.userRepositories = data;
       });
+
+      this.repositoryService
+        .getLastTenTopicsFromRepository(this.repository.name)
+        .subscribe(data => {
+          this.last10TopicsRepository = data.items;
+        });
   }
 
 }
