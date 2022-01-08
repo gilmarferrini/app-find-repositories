@@ -30,4 +30,5 @@ export class RepositoryService {
   getLastTenTopicsFromRepository(repositoryName: string) {
     return this.httpClient.get<TopicsHttpResponse>(`${this.baseURL}/search/topics?q=${repositoryName}&per_page=10`);
   }
+
 }
